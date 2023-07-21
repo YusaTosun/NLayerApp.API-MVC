@@ -1,8 +1,10 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using NLayer.Repository;
 using NLayer.Services.Mapping;
+using NLayer.Services.Validations;
 using NLayer.WEB.Modules;
 using System.Reflection;
 
@@ -15,7 +17,7 @@ namespace NLayer.WEB
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>());
             builder.Services.AddDbContext<AppDbContext>(x =>
             {
                 x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>

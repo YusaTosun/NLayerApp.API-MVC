@@ -32,7 +32,7 @@ namespace NLayer.WEB.Controllers
 
             var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
 
-            ViewBag.Categories = new SelectList(categories, "Id", "Name");
+            ViewBag.categories = new SelectList(categories, "Id", "Name");
 
             return View();
         }
@@ -50,7 +50,7 @@ namespace NLayer.WEB.Controllers
 
             var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
 
-            ViewBag.cSategories = new SelectList(categories, "Id", "Name");
+            ViewBag.categories = new SelectList(categories, "Id", "Name");
 
             return View();
         }
