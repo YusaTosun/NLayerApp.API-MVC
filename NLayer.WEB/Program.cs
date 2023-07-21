@@ -1,3 +1,11 @@
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using NLayer.WEB.Modules;
+using Microsoft.EntityFrameworkCore;
+using NLayer.Repository;
+using NLayer.Services.Mapping;
+using System.Reflection;
+
 namespace NLayer.WEB
 {
     public class Program
@@ -8,6 +16,16 @@ namespace NLayer.WEB
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(x =>
+            {
+                x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
+
+                option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name));
+            });
+
+            builder.Services.AddAutoMapper(typeof(MapProfile));
+            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+            builder.Host.ConfigureContainer<ContainerBuilder>(containerbuilder => containerbuilder.RegisterModule(new RepoServiceModule()));
 
             var app = builder.Build();
 
@@ -28,7 +46,7 @@ namespace NLayer.WEB
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=home}/{action=Index}/{id?}");
 
             app.Run();
         }
