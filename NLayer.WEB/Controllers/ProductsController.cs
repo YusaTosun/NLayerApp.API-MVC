@@ -63,7 +63,7 @@ namespace NLayer.WEB.Controllers
 
             var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
 
-            ViewBag.categories = new SelectList(categories, "Id", "Name",product.CategoryId);
+            ViewBag.categories = new SelectList(categories, "Id", "Name", product.CategoryId);
 
             return View(_mapper.Map<ProductDto>(product));
         }
@@ -82,6 +82,15 @@ namespace NLayer.WEB.Controllers
             ViewBag.categories = new SelectList(categories, "Id", "Name", productDto.CategoryId);
 
             return View(productDto);
+
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            var product = await _services.GetByIdAsync(id);
+
+            await _services.RemoveAsync(product);
+
+            return RedirectToAction(nameof(Index));
 
         }
     }
