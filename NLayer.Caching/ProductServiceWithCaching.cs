@@ -7,12 +7,7 @@ using NLayer.Core.Repository;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
 using NLayer.Services.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Caching
 {
@@ -65,7 +60,7 @@ namespace NLayer.Caching
 
         public Task<Product> GetByIdAsync(int id)
         {
-            var product = _memoryCache.Get<List<Product>>(CacheProductKey).FirstOrDefault(x=>x.Id.Equals(id));
+            var product = _memoryCache.Get<List<Product>>(CacheProductKey).FirstOrDefault(x => x.Id.Equals(id));
             if (product == null)
             {
                 throw new NotFoundException($"{typeof(Product).Name}({id}) not found");

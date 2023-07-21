@@ -8,13 +8,13 @@ using NLayer.Core.Services;
 
 namespace NLayer.WEB.Controllers
 {
-    public class ProductController : Controller
+    public class ProductsController : Controller
     {
         private readonly IProductService _services;
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
 
-        public ProductController(IProductService services, ICategoryService categoryService, IMapper mapper)
+        public ProductsController(IProductService services, ICategoryService categoryService, IMapper mapper)
         {
             _services = services;
             _categoryService = categoryService;
@@ -23,16 +23,16 @@ namespace NLayer.WEB.Controllers
 
         public async Task<IActionResult> Index()
         {
-        
+
             return View(await _services.GetProductWithCategory());
         }
         public async Task<IActionResult> Save()
         {
             var categories = await _categoryService.GetAllAsync();
 
-            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories);
+            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
 
-            ViewBag.Categories = new SelectList(categories,"Id","Name");
+            ViewBag.Categories = new SelectList(categories, "Id", "Name");
 
             return View();
         }
@@ -48,9 +48,9 @@ namespace NLayer.WEB.Controllers
             }
             var categories = await _categoryService.GetAllAsync();
 
-            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories);
+            var categoriesDto = _mapper.Map<List<CategoryDto>>(categories.ToList());
 
-            ViewBag.Categories = new SelectList(categories, "Id", "Name");
+            ViewBag.cSategories = new SelectList(categories, "Id", "Name");
 
             return View();
         }

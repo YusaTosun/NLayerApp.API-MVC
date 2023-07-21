@@ -1,23 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using NLayer.Core.Repository;
-using NLayer.Core.UnitOfWorks;
-using NLayer.Repository;
-using NLayer.Repository.UnitOfWorks;
-using System.Reflection;
-using NLayer.Core;
-using NLayer.Repository.Repositories;
-using NLayer.Core.Services;
-using NLayer.Services.Services;
-using NLayer.Services.Mapping;
-using FluentValidation.AspNetCore;
-using NLayer.Core.DTOs;
-using NLayer.Services.Validations;
-using NLayer.API.Filters;
-using Microsoft.AspNetCore.Mvc;
-using NLayer.API.Middlewares;
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NLayer.API.Filters;
+using NLayer.API.Middlewares;
 using NLayer.API.Modules;
+using NLayer.Repository;
+using NLayer.Services.Mapping;
+using NLayer.Services.Validations;
+using System.Reflection;
 
 namespace NLayer.API
 {
