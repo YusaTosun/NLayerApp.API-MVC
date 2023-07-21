@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NLayer.Services.Exceptions
+﻿namespace NLayer.Services.Exceptions
 {
-    public class ClientSideException:Exception
+    public class ClientSideException : Exception
     {
-        public ClientSideException(string message):base(message) 
+        public ClientSideException(string message) : base(message)
         {
-            
+
         }
     }
 }

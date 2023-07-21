@@ -1,13 +1,8 @@
 ﻿using NLayer.Core.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Repository.UnitOfWorks
 {
-    public class UnitOfWork:IUnitOfWorks
+    public class UnitOfWork : IUnitOfWorks
     {
         private AppDbContext _context;
 
@@ -22,7 +17,7 @@ namespace NLayer.Repository.UnitOfWorks
 
         public async Task CommitAsync()
         {
-          await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

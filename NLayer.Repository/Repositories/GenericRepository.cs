@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLayer.Core.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Repository.Repositories
 {
@@ -63,7 +58,7 @@ namespace NLayer.Repository.Repositories
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
-           return _dbSet.Where(expression);
+            return _dbSet.Where(expression);
         }
     }
 }
