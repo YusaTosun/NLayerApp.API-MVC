@@ -19,7 +19,7 @@ namespace NLayer.API.Controllers
             _service = productService;
         }
 
-        //[HttpGet("GetProductWithCategory")]
+        //GET api/product/GetProductsWithCategory
         [HttpGet("[action]")]
         public async Task<IActionResult> GetProductsWithCategory()
         {
@@ -36,7 +36,7 @@ namespace NLayer.API.Controllers
 
         }
 
-        //GET api/prodcuts/5
+        //GET api/product/5
         [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)

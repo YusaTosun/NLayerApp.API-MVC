@@ -6,6 +6,7 @@ using NLayer.Repository;
 using NLayer.Services.Mapping;
 using NLayer.Services.Validations;
 using NLayer.WEB.Modules;
+using NLayer.WEB.Services;
 using System.Reflection;
 
 namespace NLayer.WEB
@@ -23,6 +24,15 @@ namespace NLayer.WEB
                 x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
 
                 option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name));
+            });
+
+            builder.Services.AddHttpClient<ProductApiServices>(opt=>
+            {
+                opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+            });
+            builder.Services.AddHttpClient<CategoryApiServices>(opt =>
+            {
+                opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
             });
 
             builder.Services.AddScoped(typeof(NotFoundFilter<>));
