@@ -1,10 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Index";
+  
 }
 
 @model List<ProductWithCategoryDto>
 
-
+    <a class="btn btn-primary" asp-controller="Products" asp-action="Save" >Save</a>
 <table class="table tabletable-striped">
     <thead>
         <tr>

@@ -66,7 +66,7 @@ namespace NLayer.API.Controllers
 
         }
 
-        //DELETE api/prodcuts/5
+        //DELETE api/product/5
         [HttpDelete()]
         public async Task<IActionResult> Remove(int id)
         {
