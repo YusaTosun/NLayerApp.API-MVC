@@ -44,7 +44,7 @@ namespace NLayer.WEB.Services
 
         public async Task<bool> RemoveAsync(int id)
         {
-            var response = await _httpClient.DeleteAsync($"product/{id}");
+            var response = await _httpClient.DeleteAsync($"product?id={id}");
 
             return response.IsSuccessStatusCode;
         }
