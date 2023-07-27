@@ -19,7 +19,7 @@ namespace NLayer.Services.Services
     {
         private readonly IGenericRepository<Entity> _repository;
         protected readonly IUnitOfWorks _unitOfWorks;
-        private readonly IMapper _mapper;
+        protected readonly IMapper _mapper;
 
         public ServiceWithDto(IGenericRepository<Entity> repository, IUnitOfWorks unitOfWorks, IMapper mapper)
         {
@@ -103,7 +103,7 @@ namespace NLayer.Services.Services
 
             await _unitOfWorks.CommitAsync();
 
-            return CustomResponseDto<NoContentDto>.Success(StatusCodes.Status200OK);
+            return CustomResponseDto<NoContentDto>.Success(StatusCodes.Status204NoContent);
 
         }
 
