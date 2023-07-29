@@ -26,7 +26,7 @@ namespace NLayer.WEB
                 option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name));
             });
 
-            builder.Services.AddHttpClient<ProductApiServices>(opt=>
+            builder.Services.AddHttpClient<ProductApiServices>(opt =>
             {
                 opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
             });

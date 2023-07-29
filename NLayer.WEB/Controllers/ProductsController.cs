@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NLayer.Core.DTOs;
 using NLayer.Core.Models;
-using NLayer.Core.Repository;
-using NLayer.Core.Services;
 using NLayer.WEB.Services;
 
 namespace NLayer.WEB.Controllers
@@ -66,7 +63,7 @@ namespace NLayer.WEB.Controllers
         {
             if (ModelState.IsValid)
             {
-               await _productApiService.UpdateAsync(productDto);
+                await _productApiService.UpdateAsync(productDto);
                 return RedirectToAction(nameof(Index));
             }
             var categories = await _categoryApiService.GetAllAsync();
