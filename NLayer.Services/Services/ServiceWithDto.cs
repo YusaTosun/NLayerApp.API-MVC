@@ -6,12 +6,7 @@ using NLayer.Core.Models;
 using NLayer.Core.Repository;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayer.Services.Services
 {
@@ -87,7 +82,7 @@ namespace NLayer.Services.Services
 
         public async Task<CustomResponseDto<NoContentDto>> RemoveRangeAsync(IEnumerable<int> ids)
         {
-            var entities = await _repository.Where(x=>ids.Contains(x.Id)).ToListAsync();
+            var entities = await _repository.Where(x => ids.Contains(x.Id)).ToListAsync();
 
             _repository.RemoveRange(entities);
 
@@ -113,7 +108,7 @@ namespace NLayer.Services.Services
 
             var dtos = _mapper.Map<IEnumerable<Dto>>(entities);
 
-            return CustomResponseDto<IEnumerable<Dto>>.Success(StatusCodes.Status200OK,dtos);
+            return CustomResponseDto<IEnumerable<Dto>>.Success(StatusCodes.Status200OK, dtos);
         }
     }
 }

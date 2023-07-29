@@ -16,11 +16,11 @@ namespace NLayer.WEB.Services
             var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<List<ProductWithCategoryDto>>>("product/GetProductsWithCategory");
 
             return response.Data;
-        } 
+        }
 
         public async Task<ProductDto> SaveAsync(ProductDto newProduct)
         {
-            var response = await _httpClient.PostAsJsonAsync("product",newProduct);
+            var response = await _httpClient.PostAsJsonAsync("product", newProduct);
 
             if (!response.IsSuccessStatusCode) return null;
 
@@ -30,7 +30,7 @@ namespace NLayer.WEB.Services
         }
         public async Task<ProductDto> GetByIdAsync(int id)
         {
-           var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<ProductDto>>($"product/{id}");
+            var response = await _httpClient.GetFromJsonAsync<CustomResponseDto<ProductDto>>($"product/{id}");
 
             return response.Data;
         }

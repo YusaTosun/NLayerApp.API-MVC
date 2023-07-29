@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using NLayer.Caching;
 using NLayer.Core.Repository;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;

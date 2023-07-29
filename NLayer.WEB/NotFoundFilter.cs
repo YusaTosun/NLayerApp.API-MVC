@@ -6,7 +6,7 @@ using NLayer.Core.Services;
 
 namespace NLayer.WEB
 {
-    public class NotFoundFilter<T>:IAsyncActionFilter where T : BaseEntity
+    public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     {
         private readonly IService<T> _service;
 
@@ -38,7 +38,7 @@ namespace NLayer.WEB
 
             errorViewModel.Errors.Add($"{typeof(T).Name}({id}) not found");
 
-            context.Result = new RedirectToActionResult("Error","Home",errorViewModel); // todo:Bu nesne oluşturma özelliğini unutma
+            context.Result = new RedirectToActionResult("Error", "Home", errorViewModel); // todo:Bu nesne oluşturma özelliğini unutma
         }
     }
 }
